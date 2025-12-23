@@ -1,0 +1,116 @@
+# jcaldwell-labs Project Registry
+# Used by project-conductor to track and advance all organization projects
+
+organization: jcaldwell-labs
+version: "1.0.0"
+
+projects:
+  my-grid:
+    repo: jcaldwell-labs/my-grid
+    path: ~/projects/active/my-grid
+    priority: high
+    category: terminal-tui
+    description: "ASCII canvas editor with vim-style navigation, zones, PTY support"
+    roadmap: .github/planning/ROADMAP.md
+    health_weights:
+      commit_recency: 0.3
+      open_issues: 0.2
+      test_status: 0.3
+      roadmap_progress: 0.2
+    stale_threshold_days: 7
+    
+  atari-style:
+    repo: jcaldwell-labs/atari-style
+    path: ~/projects/atari-style
+    priority: high
+    category: terminal-tui
+    description: "Retro visual effects and shaders for terminal applications"
+    roadmap: .github/planning/ROADMAP.md
+    stale_threshold_days: 7
+    
+  boxes-live:
+    repo: jcaldwell-labs/boxes-live
+    path: ~/projects/boxes-live
+    priority: medium
+    category: terminal-tui
+    description: "Real-time ASCII box drawing with joystick support"
+    roadmap: .github/planning/ROADMAP.md
+    stale_threshold_days: 10
+    
+  terminal-stars:
+    repo: jcaldwell-labs/terminal-stars
+    path: ~/projects/terminal-stars
+    priority: medium
+    category: terminal-tui
+    description: "Starfield animation for terminals with joystick control"
+    roadmap: .github/planning/ROADMAP.md
+    stale_threshold_days: 10
+    
+  smartterm-prototype:
+    repo: jcaldwell-labs/smartterm-prototype
+    path: ~/projects/smartterm-prototype
+    priority: medium
+    category: terminal-tui
+    description: "Smart terminal with readline-like features"
+    roadmap: .github/planning/ROADMAP.md
+    stale_threshold_days: 14
+    
+  my-context:
+    repo: jcaldwell-labs/my-context
+    path: ~/projects/my-context
+    priority: high
+    category: cli-tools
+    description: "Context tracking for development sessions (Go CLI)"
+    roadmap: .github/planning/ROADMAP.md
+    stale_threshold_days: 7
+    
+  fintrack:
+    repo: jcaldwell-labs/fintrack
+    path: ~/projects/fintrack
+    priority: low
+    category: cli-tools
+    description: "Personal finance tracking CLI (Go)"
+    roadmap: .github/planning/ROADMAP.md
+    stale_threshold_days: 14
+    
+  tario:
+    repo: jcaldwell-labs/tario
+    path: ~/projects/tario
+    priority: medium
+    category: cli-tools
+    description: "Terminal-based platformer game (Go)"
+    roadmap: .github/planning/ROADMAP.md
+    stale_threshold_days: 14
+    
+  adventure-engine-v2:
+    repo: jcaldwell-labs/adventure-engine-v2
+    path: ~/projects/adventure-engine-v2
+    priority: medium
+    category: game-engines
+    description: "Multiplayer text adventure engine (C)"
+    roadmap: .github/planning/ROADMAP.md
+    stale_threshold_days: 10
+    
+  capability-catalog:
+    repo: jcaldwell-labs/capability-catalog
+    path: ~/projects/capability-catalog
+    priority: high
+    category: meta
+    description: "Skill/capability definitions for AI agents"
+    roadmap: .github/planning/ROADMAP.md
+    stale_threshold_days: 7
+
+# Category groupings for dashboard display
+categories:
+  terminal-tui:
+    name: "Terminal/TUI Projects"
+    color: cyan
+  cli-tools:
+    name: "CLI Tools"
+    color: green
+  game-engines:
+    name: "Game Engines"
+    color: yellow
+  meta:
+    name: "Meta/Organization"
+    color: magenta
