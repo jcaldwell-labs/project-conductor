@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-12-23T17:50:37-05:00",
+  "timestamp": "2025-12-24T15:12:34-05:00",
   "projects": {
     "tario": {
       "repo": "jcaldwell-labs/tario",
@@ -23,7 +23,7 @@
       "repo": "jcaldwell-labs/my-grid",
       "health": 80,
       "status": "healthy",
-      "last_activity": "1d ago",
+      "last_activity": "2d ago",
       "info": "24 issues",
       "priority": "high"
     }
@@ -41,7 +41,7 @@
       "repo": "jcaldwell-labs/atari-style",
       "health": 82,
       "status": "healthy",
-      "last_activity": "today",
+      "last_activity": "1d ago",
       "info": "19 issues",
       "priority": "high"
     }

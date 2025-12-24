@@ -1,0 +1,50 @@
+=== Session: 2025-12-23T18:16:45-05:00 ===
+I've successfully advanced the **atari-style** project. Here's a summary of what was accomplished:
+
+## Summary
+
+### Phosphor Persistence Post-Processing Shader
+
+**New Files Created:**
+1. `atari_style/shaders/post/phosphor.frag` - GLSL fragment shader implementing phosphor decay
+2. `atari_style/demos/visualizers/phosphor_demo.py` - Demo script showcasing the effect
+
+**Modified Files:**
+1. `atari_style/core/gl/pipeline.py` - Added PhosphorPreset and pipeline integration
+
+### Features Implemented:
+
+**Shader Capabilities:**
+- Temporal feedback using ping-pong framebuffers for persistence
+- Configurable persistence level (0.0 - 0.95)
+- Glow intensity control
+- Color bleed simulation (RGB decay at different rates, mimicking P22 phosphor)
+- Burn-in effect for static elements
+- Subtle per-pixel noise for organic feel
+- Bloom effect on bright areas
+
+**Pipeline Integration:**
+- `PhosphorPreset` dataclass with 7 built-in presets:
+  - `off`, `subtle`, `classic`, `heavy`, `arcade`, `green_terminal`, `motion_blur`
+- `add_phosphor_pass()` method for easy pipeline setup
+- `set_phosphor_preset()` for runtime preset switching
+- `get_phosphor_preset_names()` helper function
+- Proper resource management (resize/release) for ping-pong buffers
+
+**Demo Script:**
+- Renders phosphor effect with various base shaders (plasma, spiral, lissajous)
+- Supports combining phosphor with CRT effects
+- Video export (MP4/GIF) capability
+- `--list-presets` option to show all available presets
+
+### Test Results:
+- All 583 existing tests pass
+- Ruff linting passes
+- Python syntax verified
+
+### Commit:
+```
+feat: Add phosphor persistence post-processing shader
+```
+
+This advancement addresses the "Phosphor persistence" item from the roadmap's shader library expansion priorities.
