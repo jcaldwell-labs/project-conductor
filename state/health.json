@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-12-24T15:12:34-05:00",
+  "timestamp": "2025-12-29T17:37:31-05:00",
   "projects": {
     "tario": {
       "repo": "jcaldwell-labs/tario",
       "health": 100,
       "status": "healthy",
-      "last_activity": "today",
+      "last_activity": "6d ago",
       "info": "0 issues",
       "priority": "medium"
     }
@@ -14,17 +14,17 @@
       "repo": "jcaldwell-labs/fintrack",
       "health": 100,
       "status": "healthy",
-      "last_activity": "today",
+      "last_activity": "6d ago",
       "info": "9 issues",
       "priority": "low"
     }
 ,
     "my-grid": {
       "repo": "jcaldwell-labs/my-grid",
-      "health": 80,
+      "health": 88,
       "status": "healthy",
-      "last_activity": "2d ago",
-      "info": "24 issues",
+      "last_activity": "7d ago",
+      "info": "16 issues",
       "priority": "high"
     }
 ,
@@ -32,17 +32,17 @@
       "repo": "jcaldwell-labs/capability-catalog",
       "health": 100,
       "status": "healthy",
-      "last_activity": "today",
+      "last_activity": "6d ago",
       "info": "0 issues",
       "priority": "high"
     }
 ,
     "atari-style": {
       "repo": "jcaldwell-labs/atari-style",
-      "health": 82,
+      "health": 88,
       "status": "healthy",
-      "last_activity": "1d ago",
-      "info": "19 issues",
+      "last_activity": "6d ago",
+      "info": "16 issues",
       "priority": "high"
     }
 ,
@@ -50,7 +50,7 @@
       "repo": "jcaldwell-labs/boxes-live",
       "health": 100,
       "status": "healthy",
-      "last_activity": "today",
+      "last_activity": "6d ago",
       "info": "8 issues",
       "priority": "medium"
     }
@@ -59,7 +59,7 @@
       "repo": "jcaldwell-labs/terminal-stars",
       "health": 100,
       "status": "healthy",
-      "last_activity": "today",
+      "last_activity": "6d ago",
       "info": "1 issues",
       "priority": "medium"
     }
@@ -68,7 +68,7 @@
       "repo": "jcaldwell-labs/adventure-engine-v2",
       "health": 100,
       "status": "healthy",
-      "last_activity": "today",
+      "last_activity": "6d ago",
       "info": "10 issues",
       "priority": "medium"
     }
@@ -77,7 +77,7 @@
       "repo": "jcaldwell-labs/my-context",
       "health": 100,
       "status": "healthy",
-      "last_activity": "today",
+      "last_activity": "6d ago",
       "info": "1 issues",
       "priority": "high"
     }
@@ -86,7 +86,7 @@
       "repo": "jcaldwell-labs/smartterm-prototype",
       "health": 100,
       "status": "healthy",
-      "last_activity": "today",
+      "last_activity": "6d ago",
       "info": "5 issues",
       "priority": "medium"
     }
