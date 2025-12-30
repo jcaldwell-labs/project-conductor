@@ -60,3 +60,33 @@ All projects healthy (80-100%):
 - Issues closed: 11
 - Sprint labels created: ~25 (across repos)
 - Duration: ~30 minutes
+
+---
+
+## my-grid Advancement (Issue #10)
+
+**PR Created**: https://github.com/jcaldwell-labs/my-grid/pull/62
+**Branch**: feature/undo-redo
+**Commit**: 31568a2
+
+**Changes Made**:
+- Created `src/undo.py`:
+  - `UndoManager` class with configurable history depth
+  - `CellOperation` for tracking cell changes
+  - Snapshot helpers for single cells and regions
+- Updated `src/input.py`:
+  - Added UNDO and REDO actions
+  - Added Ctrl+Z and Ctrl+R keybindings
+- Updated `src/modes.py`:
+  - Added 'u' key handling in NAV mode (vim-style undo)
+- Updated `src/main.py`:
+  - Integrated UndoManager with Application
+  - Added _do_undo, _do_redo methods
+  - Registered :undo, :redo, :history commands
+  - Updated help screen with undo/redo section
+- Created `tests/test_undo.py`:
+  - 23 comprehensive tests
+
+**Results**:
+- 23 new tests added (194 → 217 total)
+- All 217 tests pass
