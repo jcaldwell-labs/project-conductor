@@ -67,7 +67,7 @@ draw_footer() {
     echo -e "${CYAN}${BOLD}╠$(printf '═%.0s' $(seq 1 $((width-2))))╣${NC}"
     printf "${CYAN}${BOLD}║${NC} ${BOLD}Commands:${NC} %-54s ${CYAN}${BOLD}║${NC}\n" ""
     printf "${CYAN}${BOLD}║${NC}   [r]efresh  [a]dvance stale  [A]dvance all  [q]uit     ${CYAN}${BOLD}║${NC}\n"
-    printf "${CYAN}${BOLD}║${NC}   [1-9] advance specific  [d]etail <num>  [p]ush all   ${CYAN}${BOLD}║${NC}\n"
+    printf "${CYAN}${BOLD}║${NC}   [1-9] advance specific  [s]ession prompts  [p]ush all ${CYAN}${BOLD}║${NC}\n"
     echo -e "${CYAN}${BOLD}╚$(printf '═%.0s' $(seq 1 $((width-2))))╝${NC}"
 }
 
@@ -157,6 +157,77 @@ push_all() {
     sleep 2
 }
 
+show_session_prompts() {
+    clear_screen
+    local prompts_dir="$PROJECT_ROOT/session-prompts"
+
+    echo -e "${CYAN}${BOLD}╔════════════════════════════════════════════════════════════════════╗${NC}"
+    echo -e "${CYAN}${BOLD}║${NC}                      📋 Session Prompts                            ${CYAN}${BOLD}║${NC}"
+    echo -e "${CYAN}${BOLD}╠════════════════════════════════════════════════════════════════════╣${NC}"
+    echo ""
+
+    if [ ! -d "$prompts_dir/critical-security" ]; then
+        echo -e "${RED}No session prompts found at: $prompts_dir${NC}"
+        echo ""
+        echo -e "${CYAN}Press any key to return...${NC}"
+        read -n 1
+        return
+    fi
+
+    echo -e "${RED}${BOLD}🔴 Critical Security (Deadline: 2026-01-10)${NC}"
+    echo ""
+
+    local idx=1
+    for prompt_file in "$prompts_dir/critical-security"/*.md; do
+        if [ -f "$prompt_file" ]; then
+            local name=$(basename "$prompt_file" .md)
+            local issues=""
+
+            # Extract issue count from the file
+            if grep -q "Issues:" "$prompt_file"; then
+                issues=$(grep "^\*\*Issues:\*\*" "$prompt_file" | head -1 | sed 's/\*\*Issues:\*\* //')
+            fi
+
+            printf "  ${CYAN}%d.${NC} %-20s ${DIM}%s${NC}\n" "$idx" "$name" "$issues"
+            ((idx++))
+        fi
+    done
+
+    echo ""
+    echo -e "${CYAN}${BOLD}╠════════════════════════════════════════════════════════════════════╣${NC}"
+    echo -e "${CYAN}${BOLD}║${NC} ${BOLD}Commands:${NC}                                                       ${CYAN}${BOLD}║${NC}"
+    echo -e "${CYAN}${BOLD}║${NC}   [1-4] View prompt    [i] View INDEX    [q] Back to dashboard ${CYAN}${BOLD}║${NC}"
+    echo -e "${CYAN}${BOLD}╚════════════════════════════════════════════════════════════════════╝${NC}"
+    echo ""
+
+    read -rsn1 choice
+    case "$choice" in
+        [1-4])
+            local files=("$prompts_dir/critical-security"/*.md)
+            local selected="${files[$((choice-1))]}"
+            if [ -f "$selected" ]; then
+                clear_screen
+                cat "$selected"
+                echo ""
+                echo -e "${CYAN}${BOLD}═══════════════════════════════════════════════════════════════════${NC}"
+                echo -e "${YELLOW}Copy this prompt and paste into a new Claude Code session${NC}"
+                echo -e "${CYAN}Press any key to continue...${NC}"
+                read -n 1
+            fi
+            ;;
+        i|I)
+            clear_screen
+            cat "$prompts_dir/INDEX.md"
+            echo ""
+            echo -e "${CYAN}Press any key to continue...${NC}"
+            read -n 1
+            ;;
+        q|Q)
+            return
+            ;;
+    esac
+}
+
 # Main loop
 main() {
     # Initial health check if no data
@@ -172,6 +243,7 @@ main() {
             r|R) refresh_health ;;
             a)   advance_stale ;;
             A)   advance_all ;;
+            s|S) show_session_prompts ;;
             p|P) push_all ;;
             q|Q) clear_screen; exit 0 ;;
             [1-9]) advance_by_number "$input" ;;

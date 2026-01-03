@@ -52,8 +52,14 @@ project-conductor/
 │   ├── advance-project.sh # Launch Claude to work on a project
 │   ├── dashboard.sh       # Interactive terminal dashboard
 │   └── deep-review.sh     # Comprehensive quality review using agents
+├── session-prompts/       # Ready-to-launch session prompts
+│   ├── INDEX.md           # Master index of all prompts
+│   ├── README.md          # Session prompts documentation
+│   ├── critical-security/ # Security fixes with deadlines
+│   ├── active-development/# Ongoing feature work
+│   └── backlog/           # Lower priority enhancements
 ├── prompts/
-│   └── advance-*.md       # Custom prompts per project (optional)
+│   └── advance-*.md       # Custom prompts per project (legacy)
 └── CLAUDE.md              # This file
 ```
 
@@ -124,9 +130,61 @@ cat state/reviews/$(date +%Y-%m-%d)/my-grid-SUMMARY.md
 ./scripts/advance-project.sh my-grid
 ```
 
-## Custom Prompts
+## Session Prompts - Ready-to-Launch Sessions
 
-Create project-specific prompts in :
+The `session-prompts/` directory maintains comprehensive, ready-to-use prompts for advancing projects systematically.
+
+### Quick Access
+
+```bash
+# From dashboard
+./scripts/dashboard.sh
+# Press 's' to view session prompts
+
+# From command line
+cat session-prompts/INDEX.md
+cat session-prompts/critical-security/my-grid.md
+```
+
+### Prompt Categories
+
+- **critical-security/** - Security vulnerabilities with deadlines
+- **active-development/** - Ongoing feature work
+- **backlog/** - Lower priority enhancements
+
+### Using Session Prompts
+
+1. **View the prompt:**
+   ```bash
+   cat session-prompts/critical-security/my-grid.md
+   ```
+
+2. **Navigate to project:**
+   ```bash
+   cd ~/projects/my-grid
+   ```
+
+3. **Launch Claude Code session** and paste the entire prompt
+
+Each prompt includes:
+- Full context from previous work
+- Specific objectives with code examples
+- Testing strategies and security patterns
+- Workflow recommendations with time estimates
+- Success criteria and validation steps
+
+### Updating Prompts
+
+After completing a session:
+- Mark progress in `session-prompts/INDEX.md`
+- Update or archive the prompt as needed
+- Move between categories (critical → active → backlog)
+
+See `session-prompts/README.md` for detailed documentation.
+
+## Custom Prompts (Legacy)
+
+For ad-hoc advancement, create project-specific prompts in `prompts/`:
 
 ```markdown
 # prompts/advance-my-grid.md
@@ -136,6 +194,8 @@ Focus on the PTY zone improvements. Specifically:
 3. Add tests for ANSI color preservation
 ```
 
+**Note:** Consider using `session-prompts/` for structured, reusable prompts.
+
 ## Dashboard Commands
 
 | Key | Action |
@@ -143,6 +203,7 @@ Focus on the PTY zone improvements. Specifically:
 | r | Refresh health data |
 | a | Advance stalest project |
 | A | Advance all unhealthy projects |
+| s | View session prompts |
 | 1-9 | Advance project by number |
 | p | Push all unpushed commits |
 | q | Quit |
