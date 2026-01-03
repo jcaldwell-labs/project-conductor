@@ -1,0 +1,23 @@
+# Review outputs (generated artifacts)
+state/reviews/*/
+!state/reviews/README.md
+
+# Session logs
+state/sessions/*.log
+
+# Health data (regenerated on each run)
+state/health.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.bak
